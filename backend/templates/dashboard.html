@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>SOC Dashboard</h1>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Threat Score</h3>
+        <p>{{ threat_score }}%</p>
+    </div>
+
+    <div class="card">
+        <h3>Critical Alerts</h3>
+        <p>{{ critical }}</p>
+    </div>
+
+    <div class="card">
+        <h3>High Alerts</h3>
+        <p>{{ high }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Medium Alerts</h3>
+        <p>{{ medium }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Incidents</h3>
+        <p>{{ incidents }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Registered Users</h3>
+        <p>{{ users }}</p>
+    </div>
+
+</div>
+
+{% endblock %}

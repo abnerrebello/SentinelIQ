@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Incident Details</h1>
+
+<div class="card">
+
+    <h2>{{ incident.incident_type }}</h2>
+
+    <p><b>Severity:</b> {{ incident.severity }}</p>
+
+    <p><b>Source IP:</b> {{ incident.ip }}</p>
+
+    <p><b>Failed Attempts:</b> {{ incident.failed_attempts }}</p>
+
+    <p><b>Status:</b> {{ incident.status }}</p>
+
+    <hr>
+
+    <h3>MITRE ATT&CK</h3>
+
+    <p><b>Technique ID:</b> {{ incident.mitre_id }}</p>
+
+    <p><b>Technique:</b> {{ incident.mitre_name }}</p>
+
+    <hr>
+
+    <h3>Recommended Response</h3>
+
+    {% if incident.incident_type == "Brute Force Attack" %}
+
+        <ul>
+            <li>Lock the affected account.</li>
+            <li>Block the attacking IP.</li>
+            <li>Review authentication logs.</li>
+            <li>Enable MFA if not already enabled.</li>
+        </ul>
+
+    {% elif incident.incident_type == "PowerShell Execution" %}
+
+        <ul>
+            <li>Review executed PowerShell commands.</li>
+            <li>Check endpoint for malicious scripts.</li>
+        </ul>
+
+    {% elif incident.incident_type == "Privilege Escalation" %}
+
+        <ul>
+            <li>Review administrator privileges.</li>
+            <li>Audit recent user activity.</li>
+        </ul>
+
+    {% elif incident.incident_type == "Security Log Cleared" %}
+
+        <ul>
+            <li>Investigate potential anti-forensics activity.</li>
+            <li>Preserve remaining evidence immediately.</li>
+        </ul>
+
+    {% elif incident.incident_type == "Suspicious Service Installed" %}
+
+        <ul>
+            <li>Review the newly installed service.</li>
+            <li>Check its executable path and publisher.</li>
+            <li>Verify whether the installation was authorized.</li>
+        </ul>
+
+    {% else %}
+
+        <ul>
+            <li>Investigate this event.</li>
+        </ul>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

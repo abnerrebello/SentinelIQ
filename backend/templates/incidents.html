@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Security Incidents</h1>
+
+<br>
+
+{% if incidents %}
+
+    {% for incident in incidents %}
+
+        <div class="card">
+
+            <h2>
+                <a href="/incidents/{{ incident.id }}" style="color: white; text-decoration: none;">
+                    {{ incident.incident_type }}
+                </a>
+            </h2>
+
+            <p><strong>Severity:</strong> {{ incident.severity }}</p>
+
+            <p><strong>IP:</strong> {{ incident.ip }}</p>
+
+            <p><strong>Failed Attempts:</strong> {{ incident.failed_attempts }}</p>
+
+            <p><strong>Status:</strong> {{ incident.status }}</p>
+
+        </div>
+
+        <br>
+
+    {% endfor %}
+
+{% else %}
+
+<h2>No incidents detected.</h2>
+
+{% endif %}
+
+{% endblock %}

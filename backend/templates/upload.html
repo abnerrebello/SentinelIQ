@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Upload Security Logs</h1>
+
+<br>
+
+<form
+action="/upload/"
+method="post"
+enctype="multipart/form-data">
+
+<input
+type="file"
+name="file">
+
+<br><br>
+
+<button>
+
+Upload
+
+</button>
+
+</form>
+
+{% endblock %}
